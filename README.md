@@ -62,6 +62,7 @@ The following properties can be configured:
 | ---------------------------- | -----------
 | `imageType`                  | Type of image captured by [Solar Dynamics Observatory](https://sdo.gsfc.nasa.gov/data/) présent in `imageTable`. You can choose the wavelength used. <br><br> **Possible values:** view table below. <br> **Default value:** `'AIA 304'`
 | `updateInterval`             | How often does the content needs to be fetched? (Milliseconds) <br><br> **Possible values:** `1000` - `86400000` <br> **Default value:** `1 * 60 * 60 * 1000` (1 hour)
+| `transitionInterval`         | Display time of one image before moving to the next. If set to 0, the slideshow is disabled. (Milliseconds) <br><br> **Possible values:** `0` - `3600000` <br> **Default value:** `0` (slideshow disabled)
 | `animationSpeed`             | Speed of the update animation. (Milliseconds) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `1000` (1 second)
 | `maxMediaWidth`              | Maximum width for media display. If set to 0, the media's actual width is used. (Pixels) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `0` (media's width)
 | `maxMediaHeight`             | Maximum height for media display. If set to 0, the media's actual height is used. (Pixels) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `0` (media's height)
@@ -84,10 +85,11 @@ imageTable: {
 }
 ```
 
-
 ## Todo
 
-[ ] Hide timestamp on the picture
+- [x] Add slideshow with all SDO images
+- [x] Add image preload
+- [ ] Hide timestamp on the picture
 
 ## License
 

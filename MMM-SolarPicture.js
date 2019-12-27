@@ -14,6 +14,7 @@ Module.register("MMM-SolarPicture",{
 	defaults: {
 		imageType: "AIA 304",
 		updateInterval: 1 * 60 * 60 * 1000, // every 1 hour
+		transitionInterval: 0, // slideshow disabled
 		animationSpeed: 1000, // 1 second
 		maxMediaWidth: 0,
 		maxMediaHeight: 0,
@@ -37,6 +38,17 @@ Module.register("MMM-SolarPicture",{
 	start: function() {
 		Log.info("Starting module: " + this.name);
 
+		if(this.config.transitionInterval != 0) {
+			const images = Object.keys(this.config.imageTable);
+			for (let i = 0; i < images.length; i++) {
+				new Image().src = this.config.imageTable[images[i]];
+			}
+		} else {
+			new Image().src = this.config.imageTable[this.config.imageType];
+		}
+
+		this.interval = null;
+
 		this.loaded = false;
 		this.scheduleUpdate(this.config.initialLoadDelay);
 	},
@@ -54,6 +66,7 @@ Module.register("MMM-SolarPicture",{
 		var solarImage = document.createElement('img');
 
 		var styleString = '';
+		//var styleString = 'mask-image: rect(10px, 290px, 190px, 10px);';
 		if (this.config.maxMediaWidth != 0) {
 			styleString += 'max-width: ' + this.config.maxMediaWidth + 'px;';
 		}
@@ -84,6 +97,26 @@ Module.register("MMM-SolarPicture",{
 		this.loaded = true;
 		this.updateDom(this.config.animationSpeed);
     this.scheduleUpdate();
+
+		if(this.config.transitionInterval != 0) {
+			clearInterval(this.interval);
+
+			const images = Object.keys(this.config.imageTable);
+			let index = images.indexOf(this.config.imageType);
+			var self = this;
+			this.interval = setInterval(function() {
+
+				index++;
+				if (index >= images.length) {
+					index = 0;
+				}
+
+				self.config.imageType = images[index];
+				self.updateDom(self.config.animationSpeed);
+
+			}, this.config.transitionInterval);
+		}
+
 	},
 
 	// Schedule next update
