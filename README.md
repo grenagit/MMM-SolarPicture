@@ -1,7 +1,7 @@
 # Module: MMM-SolarPicture
 This module displays the last Solar Dynamics Observatory (SDO) picture, including copyright.
 
-The type of image displayed can be chosen. The max-height and max-width of the media can be fixed.
+The type of image displayed can be chosen or slideshow mode can be enabled. The max-height and max-width of the media can be fixed.
 
 <p align="left">
 <img alt="MMM-SolarPicture Screenshot #1" src="MMM-SolarPicture_screenshot1.png" height="250px">
@@ -60,14 +60,14 @@ The following properties can be configured:
 
 | Option                       | Description
 | ---------------------------- | -----------
-| `imageType`                  | Type of image captured by [Solar Dynamics Observatory](https://sdo.gsfc.nasa.gov/data/) présent in `imageTable`. You can choose the wavelength used. <br><br> **Possible values:** view table below. <br> **Default value:** `'AIA 304'`
+| `imageType`                  | Type of image captured by [Solar Dynamics Observatory](https://sdo.gsfc.nasa.gov/data/) present in `imageTable`. You can choose the wavelength used. <br><br> **Possible values:** view table below. <br> **Default value:** `'AIA 304'`
 | `updateInterval`             | How often does the content needs to be fetched? (Milliseconds) <br><br> **Possible values:** `1000` - `86400000` <br> **Default value:** `1 * 60 * 60 * 1000` (1 hour)
 | `transitionInterval`         | Display time of one image before moving to the next. If set to 0, the slideshow is disabled. (Milliseconds) <br><br> **Possible values:** `0` - `3600000` <br> **Default value:** `0` (slideshow disabled)
 | `animationSpeed`             | Speed of the update animation. (Milliseconds) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `1000` (1 second)
 | `maxMediaWidth`              | Maximum width for media display. If set to 0, the media's actual width is used. (Pixels) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `0` (media's width)
 | `maxMediaHeight`             | Maximum height for media display. If set to 0, the media's actual height is used. (Pixels) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `0` (media's height)
 | `initialLoadDelay`           | The initial delay before loading. (Milliseconds) <br><br> **Possible values:** `1000` - `5000` <br> **Default value:**  `0`
-| `imageTable`                 | The conversion table to convert the weather conditions to weather-icons. <br><br> **Default value:**   view table below. |
+| `imageTable`                 | The image table to convert type of image to url. <br><br> **Default value:** view table below. |
 
 ### Default Image Table
 
